@@ -34,6 +34,10 @@ module Resque
       # Schedule all jobs and continually look for delayed jobs (never returns)
       def run
         $0 = "resque-scheduler: Starting"
+        
+        # Flush buffering
+        $stdout.sync = true
+        
         # trap signals
         register_signal_handlers
 
